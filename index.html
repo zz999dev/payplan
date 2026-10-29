@@ -654,7 +654,7 @@ function preStart(){
   var d=dn(ST.start)-dn(TODAY),S=ST.settings,k=keyForDate(S,ST.start),need=bridgeNeed(ST,k);
   return header('Checklist')+'<div class="card pre"><div class="lab">NOT STARTED YET</div><div class="big">'+fmtDay(ST.start)+'</div>'+
     '<div class="sm" style="margin-top:2px">'+(d===1?'Tomorrow':'In '+d+' days')+' &middot; your first Flex pay</div>'+
-    '<div class="steps"><div><i>1</i><span>Refill the Bridge with '+money(need)+'</span></div><div><i>2</i><span>The rest, '+money(S.pay-need)+', becomes the Flex pot</span></div><div><i>3</i><span>Two weeks later the Fixed pay covers all bills</span></div></div></div>'+
+    '<div class="steps">'+(need>0?'<div><i>1</i><span>Refill the Bridge with '+money(need)+'</span></div><div><i>2</i><span>The rest, '+money(S.pay-need)+', becomes the Flex pot</span></div>':'<div><i>1</i><span>Your bills ('+money(billsTotal(ST,k))+') fit inside one pay, so no Bridge is needed. Check your bills in Settings.</span></div><div><i>2</i><span>The whole Flex pay, '+money(S.pay)+', becomes the Flex pot</span></div>')+'<div><i>3</i><span>Two weeks later the Fixed pay covers all bills</span></div></div></div>'+
     '<div class="xs mu" style="margin:0 4px">Until then the Checklist stays quiet. The Tracker still follows your card.</div>';
 }
 function checklistTab(){
